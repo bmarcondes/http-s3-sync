@@ -61,11 +61,6 @@ class S3Sync(workerpool.Job):
 			logger('http://%s%s in sync\n' % (dest_host,u.path))
 			
 	except Exception,e:	
-		try:
-			os.remove(save_path)
-		except Exception,e:
-			logger('could not remove file on %s\n' % save_path)
-			
 		logger('could not copy url %s - %s\n' % (self.url,e))
 
 pool = workerpool.WorkerPool(size=10)
