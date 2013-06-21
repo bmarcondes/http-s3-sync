@@ -12,7 +12,7 @@ size_limit=1024 * 1024 * 10
 logname=sys.argv[0].strip('.py').lstrip('/') + '.log'
 log = open(logname,'w')
 s3 = boto.connect_s3()
-bucket = s3.get_bucket('stream.ig.com.br')
+bucket = s3.get_bucket('')
 prefix = ''
 verbose=False
 
