@@ -37,7 +37,7 @@ class S3Sync(workerpool.Job):
 		resp_origin,c_origin = h.request(u.geturl(),'HEAD')
 		resp_dest,c_dest = h.request('http://%s%s' % (dest_host,u.path),'HEAD')
 		if resp_origin['status'] != resp_dest['status'] :
-			if resp_origin['content-length'] > size_limit:
+			if int(resp_origin['content-length']) > size_limit:
 				# big file, save to disk
 				logger('%s is larger then limit: %s, saving to disk\n' % (u.geturl(),resp_origin['content-length']))
 				save_path= '/tmp/' + os.path.basename(u.path) 
